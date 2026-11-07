@@ -1,0 +1,126 @@
+:root {
+  --fundo: #f6f7f9;
+  --cartao: #ffffff;
+  --texto: #15171a;
+  --suave: #5f6670;
+  --borda: #e3e6ea;
+  --primaria: #1f6feb;
+  --primaria-texto: #ffffff;
+  --perigo: #c93c37;
+  --tag: #eef1f4;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fundo: #0f1115;
+    --cartao: #171a20;
+    --texto: #e8eaed;
+    --suave: #9aa3ad;
+    --borda: #2a2f37;
+    --primaria: #4c8dff;
+    --perigo: #ff6b66;
+    --tag: #232831;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+h1, h2 { margin: 0 0 4px; font-size: 1.15rem; }
+
+.app { max-width: 860px; margin: 0 auto; padding: 16px; }
+
+header {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  justify-content: space-between; align-items: center;
+  margin-bottom: 16px;
+}
+
+nav, .filtros, .acoes { display: flex; flex-wrap: wrap; gap: 8px; }
+nav { margin-bottom: 16px; }
+
+.centro { min-height: 100vh; display: grid; place-items: center; padding: 16px; }
+
+.cartao {
+  background: var(--cartao);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.cartao.inativo { opacity: 0.55; }
+.login { width: 100%; max-width: 360px; }
+
+label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: 0.9rem; }
+
+input, textarea {
+  width: 100%;
+  font: inherit; font-weight: 400;
+  color: var(--texto);
+  background: var(--fundo);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+textarea { resize: vertical; }
+input:focus, textarea:focus { outline: 2px solid var(--primaria); outline-offset: -1px; }
+
+button {
+  font: inherit; font-weight: 600;
+  border: 1px solid var(--primaria);
+  background: var(--primaria);
+  color: var(--primaria-texto);
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+button:disabled { opacity: 0.6; cursor: default; }
+button.secundario, nav button {
+  background: transparent; color: var(--texto); border-color: var(--borda);
+}
+nav button.ativa, .filtros button.ativa {
+  background: var(--primaria); color: var(--primaria-texto); border-color: var(--primaria);
+}
+button.perigo { background: transparent; color: var(--perigo); border-color: var(--borda); }
+button.link {
+  background: none; border: 0; padding: 0;
+  color: var(--primaria); font-weight: 400; text-decoration: underline;
+}
+
+.filtro { margin-bottom: 12px; }
+.lista { list-style: none; margin: 0; padding: 0; }
+.topo { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
+.texto { margin: 0; white-space: pre-wrap; }
+.sub { color: var(--suave); margin: 0; font-size: 0.9rem; }
+.erro { color: var(--perigo); margin: 0; }
+
+.tag {
+  display: inline-block;
+  background: var(--tag);
+  color: var(--suave);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 0.8rem;
+  margin-right: 6px;
+  white-space: nowrap;
+}
+
+.badge {
+  display: inline-block;
+  margin-left: 6px;
+  min-width: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--perigo);
+  color: #fff;
+  font-size: 0.75rem;
+  line-height: 20px;
+  text-align: center;
+}
